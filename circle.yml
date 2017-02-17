@@ -1,0 +1,12 @@
+machine:
+  services:
+    - docker
+
+dependencies:
+  override:
+    - docker build -t polinux/postgres-bdr .
+
+test:
+  override:
+    - docker run -d --name postgres polinux/postgres-bdr
+    - while true; do if docker logs postgres | grep "Database started in single mode"; then break; else sleep 1; fi done
