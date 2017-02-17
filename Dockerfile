@@ -1,4 +1,4 @@
-FROM million12/centos-supervisor
+FROM polinux/centos-supervisor
 
 ENV \
       GOSU_VERSION=1.10 \
