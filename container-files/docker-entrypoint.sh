@@ -70,6 +70,7 @@ if [ "$1" = 'postgres' ]; then
       echo "max_wal_senders = 10";
       echo "max_replication_slots = 10";
       echo "max_worker_processes = 10";
+      echo "port = $POSTGRES_PORT";
     } >> "$PGDATA"/postgresql.conf
 
 		if [ -d /docker-entrypoint-initdb.d ]; then

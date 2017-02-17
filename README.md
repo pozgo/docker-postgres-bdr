@@ -22,6 +22,7 @@ User can specify if database should work as `stand-alone` or `master/slave` mode
 |`POSTGRES_PASSWORD`|Self explanatory|
 |`POSTGRES_USER`|Self explanatory|
 |`POSTGRES_DB`|Self explanatory|
+|`POSTGRES_PORT`|Self explanatory|
 |`MODE`|Mode in which this image shoudl work. Options: `single/master/slave` (default=single)|
 |`MASTER_ADDRESS`|Address of master node|
 |`MASTER_PORT`|Master node port|

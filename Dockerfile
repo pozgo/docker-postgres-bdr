@@ -9,6 +9,7 @@ ENV \
       POSTGRES_PASSWORD=password \
       POSTGRES_USER=root \
       POSTGRES_DB=db \
+      POSTGRES_PORT=5432 \
       MODE=single \
       MASTER_ADDRESS=localhost \
       MASTER_PORT=5432 \
