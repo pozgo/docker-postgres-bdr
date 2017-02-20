@@ -25,6 +25,7 @@ if [ $MODE == 'master' ]; then
   while true; do if cat /var/lib/postgresql/data/pg_log/postgresql*.log | grep "database system is ready to accept connections"; then break; else sleep 1; fi done
   psql $POSTGRES_DB -U $POSTGRES_USER -p $POSTGRES_PORT -c "CREATE EXTENSION IF NOT EXISTS btree_gist;"
   psql $POSTGRES_DB -U $POSTGRES_USER -p $POSTGRES_PORT -c "CREATE EXTENSION IF NOT EXISTS pg_trgm;"
+  psql $POSTGRES_DB -U $POSTGRES_USER -p $POSTGRES_PORT -c "CREATE EXTENSION IF NOT EXISTS plpgsql;"
   psql $POSTGRES_DB -U $POSTGRES_USER -p $POSTGRES_PORT -c "CREATE EXTENSION IF NOT EXISTS bdr;"
   psql $POSTGRES_DB -U $POSTGRES_USER -p $POSTGRES_PORT -c "SELECT bdr.bdr_group_create(
     local_node_name := '${HOSTNAME}',
@@ -38,6 +39,7 @@ elif [ $MODE == 'slave' ]; then
   while true; do if cat /var/lib/postgresql/data/pg_log/postgresql*.log | grep "database system is ready to accept connections"; then break; else sleep 1; fi done
   psql $POSTGRES_DB -U $POSTGRES_USER -p $POSTGRES_PORT -c "CREATE EXTENSION IF NOT EXISTS btree_gist;"
   psql $POSTGRES_DB -U $POSTGRES_USER -p $POSTGRES_PORT -c "CREATE EXTENSION IF NOT EXISTS pg_trgm;"
+  psql $POSTGRES_DB -U $POSTGRES_USER -p $POSTGRES_PORT -c "CREATE EXTENSION IF NOT EXISTS plpgsql;"
   psql $POSTGRES_DB -U $POSTGRES_USER -p $POSTGRES_PORT -c "CREATE EXTENSION IF NOT EXISTS bdr;"
   psql $POSTGRES_DB -U $POSTGRES_USER -p $POSTGRES_PORT -c "SELECT bdr.bdr_group_join(
     local_node_name := '${HOSTNAME}',
