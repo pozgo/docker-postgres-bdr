@@ -7,8 +7,8 @@ ENV \
       PGDATA=/var/lib/postgresql/data \
       TERM=xterm \
       POSTGRES_PASSWORD=password \
-      POSTGRES_USER=root \
-      POSTGRES_DB=db \
+      POSTGRES_USER=postgres \
+      POSTGRES_DB=postgres \
       POSTGRES_PORT=5432 \
       MODE=single \
       MASTER_ADDRESS=localhost \
