@@ -60,11 +60,12 @@ if [ "$1" = 'postgres' ]; then
 
 		{ echo;
       echo "host all all 0.0.0.0/0 $authMethod";
-      echo "host replication all 0.0.0.0/0 $authMethod";
+      echo "host replication all 0.0.0.0/0 trust";
     } >> "$PGDATA"/pg_hba.conf
 
 		{ echo;
       echo "shared_preload_libraries = 'bdr'";
+      echo "client_encoding = utf8";
       echo "wal_level = 'logical'";
       echo "track_commit_timestamp = on";
       echo "max_wal_senders = 10";
