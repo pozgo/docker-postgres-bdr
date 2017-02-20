@@ -29,6 +29,7 @@ if [ $MODE == 'master' ]; then
     local_node_name := '${HOSTNAME}',
     node_external_dsn := 'host=${HOSTNAME} port=${MASTER_PORT} dbname=${POSTGRES_DB} user=${POSTGRES_USER} password=${POSTGRES_PASSWORD}'
   );"
+  psql $POSTGRES_DB -U $POSTGRES_USER -p $POSTGRES_PORT -c "SELECT bdr.bdr_node_join_wait_for_ready();"
   message
   log "Database started in ${MODE} mode"
 elif [ $MODE == 'slave' ]; then
@@ -42,6 +43,7 @@ elif [ $MODE == 'slave' ]; then
     node_external_dsn := 'host=${HOSTNAME} port=${SLAVE_PORT} dbname=${POSTGRES_DB} user=${POSTGRES_USER} password=${POSTGRES_PASSWORD}',
     join_using_dsn := 'host=${MASTER_ADDRESS} port=${MASTER_PORT} dbname=${POSTGRES_DB} user=${POSTGRES_USER} password=${POSTGRES_PASSWORD}'
   );"
+  psql $POSTGRES_DB -U $POSTGRES_USER -p $POSTGRES_PORT -c "SELECT bdr.bdr_node_join_wait_for_ready();"
   message
   log "Database started in ${MODE} mode"
 elif [ $MODE == 'single' ]; then
